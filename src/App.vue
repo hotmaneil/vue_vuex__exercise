@@ -12,8 +12,11 @@
           <span class="badge badge-pill badge-danger">{{cart.carts.length}}</span>
           <span class="sr-only">unread messages</span>
         </button>
-        <div class="dropdown-menu dropdown-menu-right p-3" style="min-width: 300px"
-          data-offset="400">
+        <div
+          class="dropdown-menu dropdown-menu-right p-3"
+          style="min-width: 300px"
+          data-offset="400"
+        >
           <h6>已選擇商品</h6>
           <table class="table table-sm">
             <tbody>
@@ -39,24 +42,28 @@
       <div class="container">
         <div class="p-3 bg-lighter">
           <h1 class="display-3 font-weight-bold">買到剁手手！最後出清</h1>
-          <p class="lead">This is a modified jumbotron that occupies
-            the entire horizontal space of its parent.</p>
+          <p class="lead">
+            This is a modified jumbotron that occupies
+            the entire horizontal space of its parent.
+          </p>
         </div>
       </div>
     </div>
     <Loading :active.sync="isLoading"></Loading>
-    <router-view/>
+    <router-view />
     <footer class="bg-light text-muted py-5">
       <div class="container">
         <ul class="list-inline text-center">
           <li class="list-inline-item">© Copright 2017 六角血拼賣賣</li>
           <li class="list-inline-item">
             <a class="text-info" href="#">
-              <i class="fa fa-instagram" aria-hidden="true"></i> Instagrame</a>
+              <i class="fa fa-instagram" aria-hidden="true"></i> Instagrame
+            </a>
           </li>
           <li class="list-inline-item">
             <a class="text-info" href="#">
-              <i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</a>
+              <i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook
+            </a>
           </li>
           <li class="list-inline-item">
             <a class="text-info" href="#">About</a>
@@ -69,7 +76,7 @@
 </template>
 
 <script>
-import {mapGetters,mapActions}from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'App',
@@ -82,9 +89,9 @@ export default {
     //   this.$store.dispatch('getCart');
     // },
     removeCart(id) {
-      this.$store.dispatch('removeCart', id);
+      this.$store.dispatch('cartsModules/removeCart', id);
     },
-    ...mapActions(['getCart']),
+    ...mapActions('cartsModules', ['getCart']),
   },
   computed: {
     // isLoading() {
@@ -93,7 +100,8 @@ export default {
     //  cart() {
     //   return this.$store.state.cart;
     // },
-    ...mapGetters(['cart', 'isLoading']),
+    ...mapGetters('cartsModules', ['cart']),
+    ...mapGetters(['isLoading']),
   },
   created() {
     this.getCart();
@@ -105,7 +113,7 @@ export default {
 @import "~bootstrap/scss/bootstrap";
 .jumbotron-bg {
   /* banners.png */
-  background: url('https://images.unsplash.com/photo-1477901492169-d59e6428fc90?w=1350');
+  background: url("https://images.unsplash.com/photo-1477901492169-d59e6428fc90?w=1350");
   background-size: cover;
   background-position: center center;
   min-height: 400px;
@@ -113,7 +121,7 @@ export default {
 
 /* 半透明背景 */
 .bg-lighter {
-  background-color: rgba(255, 255, 255, .45);
+  background-color: rgba(255, 255, 255, 0.45);
 }
 
 /* 購物車按鈕 */
@@ -130,16 +138,16 @@ export default {
 }
 
 .main-content {
-  min-height: calc(100vh - 56px - 176px)
+  min-height: calc(100vh - 56px - 176px);
 }
 
 .box-shadow {
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, .05);
-  transition: .3s linear;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+  transition: 0.3s linear;
 }
 
 .box-shadow:hover {
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, .08);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
 }
 
 .dropdown-menu-right {
@@ -150,5 +158,4 @@ export default {
 .alert-rounded {
   border-radius: 50px;
 }
-
 </style>
